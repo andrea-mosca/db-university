@@ -28,7 +28,9 @@ WHERE
    laurea (286):
 
 ```sql
-
+SELECT *
+FROM `courses`
+WHERE (`year`)=1 AND (`period`)= "I semestre";
 ```
 
 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del
