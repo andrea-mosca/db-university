@@ -66,7 +66,22 @@ ORDER BY `students`.`surname`, `students`.`name`
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
 ```sql
+SELECT `degrees`.*,
+`courses`.`id` AS `course_id`,
+`courses`.`name` AS `course_name`,
+`courses`.`cfu` AS `course_cfu`,
+`courses`.`website` AS `course_website`,
+`teachers`.`name` AS `teacher_name`
+FROM `degrees`
 
+INNER JOIN `courses`
+ON `degrees`.`id`= `courses`.`degree_id`
+
+INNER JOIN `course_teacher`
+ON `courses`.`id`= `course_teacher`.`course_id`
+
+INNER JOIN `teachers`
+ON `teachers`.`id`= `course_teacher`.`teacher_id`
 ```
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di
