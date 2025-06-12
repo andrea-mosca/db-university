@@ -110,5 +110,16 @@ ORDER BY `teachers`.`surname`,`teachers`.`name`
    filtrare i tentativi con voto minimo 18
 
 ```sql
+SELECT
+  `exam_student`.`student_id` AS `student_id`,
+  `exam_student`.`exam_id` AS `exam_id`,
+  COUNT(*) AS `num_tentativi`
 
+FROM `students`
+
+INNER JOIN `exam_student`
+ON `students`.`id`=`exam_student`.`student_id`
+
+GROUP BY `exam_student`.`student_id`, `exam_student`.`exam_id`
+ORDER BY `exam_student`.`exam_id`, `exam_student`.`student_id`
 ```
