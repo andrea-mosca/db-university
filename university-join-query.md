@@ -43,7 +43,24 @@ WHERE `teachers`.`id`= 44;
    nome
 
 ```sql
+SELECT `students`.*,
+`departments`.`name` AS `department_name`,
+`degrees`.`id` AS `degree_id`,
+`degrees`.`name` AS `degree_name`,
+`degrees`.`level` AS `degree_level`,
+`degrees`.`address` AS `degree_address`,
+`degrees`.`email` AS `degree_email`,
+`degrees`.`website` AS `degree_website`
 
+FROM `students`
+
+INNER JOIN `degrees`
+ON `students`.`degree_id`=`degrees`.`id`
+
+INNER JOIN `departments`
+ON `departments`.`id`=`degrees`.`department_id`
+
+ORDER BY `students`.`surname`, `students`.`name`
 ```
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
