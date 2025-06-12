@@ -88,7 +88,21 @@ ON `teachers`.`id`= `course_teacher`.`teacher_id`
    Matematica (54)
 
 ```sql
+SELECT DISTINCT `teachers`.*, `departments`.`name`
+-- DISTINCT per evitare di mostrare un docente che insegni in più corsi nello stesso dipartimento
+FROM `teachers`
 
+INNER JOIN `course_teacher`
+ON `teachers`.`id`= `course_teacher`.`teacher_id`
+INNER JOIN `courses`
+ON `courses`.`id`= `course_teacher`.`course_id`
+INNER JOIN `degrees`
+ON `degrees`.`id`= `courses`.`degree_id`
+INNER JOIN `departments`
+ON `departments`.`id`= `degrees`.`department_id`
+
+WHERE `departments`.`name`= "Dipartimento di Matematica"
+ORDER BY `teachers`.`surname`,`teachers`.`name`
 ```
 
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
